@@ -1,5 +1,19 @@
+ENV['RACK_ENV'] = 'test'
+
+
+require_relative '../app'
+require 'data_mapper'
+require 'dm-migrations'
+require 'rspec'
+require 'database_cleaner'
+require 'capybara'
+require 'capybara/rspec'
+require 'launchy'
 require 'simplecov'
 require 'simplecov-console'
+
+Capybara.save_path = '/Users/will/Projects/MA-COURSE/week4/chitter-challenge/logs'
+Capybara.app = Chitter
 
 SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new([
   SimpleCov::Formatter::Console,
@@ -9,6 +23,22 @@ SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new([
 SimpleCov.start
 
 RSpec.configure do |config|
+
+  # config.before(:suite) do
+  #   DatabaseCleaner.strategy = :transaction
+  #   #DatabaseCleaner.clean_with(:truncation)
+  # end
+  #
+  # config.before(:each) do
+  #   DatabaseCleaner.start
+  # end
+  #
+  # config.after(:each) do
+  #   DatabaseCleaner.clean
+  # end
+
+
+
   config.after(:suite) do
     puts
     puts "\e[33mHave you considered running rubocop? It will help you improve your code!\e[0m"
