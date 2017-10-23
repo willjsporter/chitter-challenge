@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.4.1'
+ruby '2.4.0'
 
 gem 'data_mapper'
 gem 'database_cleaner'
@@ -9,6 +9,9 @@ gem 'shotgun'
 gem 'rack'
 gem 'launchy'
 gem 'pg'
+gem 'pry'
+gem 'timecop'
+# gem 'json', '1.6'
 
 group :test do
   gem 'cucumber'

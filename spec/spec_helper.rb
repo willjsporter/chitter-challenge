@@ -11,6 +11,8 @@ require 'capybara/rspec'
 require 'launchy'
 require 'simplecov'
 require 'simplecov-console'
+require 'sinatra/base'
+require 'timecop'
 
 Capybara.save_path = '/Users/will/Projects/MA-COURSE/week4/chitter-challenge/logs'
 Capybara.app = Chitter
@@ -29,13 +31,15 @@ RSpec.configure do |config|
   #   #DatabaseCleaner.clean_with(:truncation)
   # end
   #
-  # config.before(:each) do
-  #   DatabaseCleaner.start
-  # end
-  #
-  # config.after(:each) do
-  #   DatabaseCleaner.clean
-  # end
+  config.before(:each) do
+    # DatabaseCleaner.start
+    Timecop.freeze(Time.now)
+  end
+
+  config.after(:each) do
+    # DatabaseCleaner.clean
+    Timecop.return
+  end
 
 
 

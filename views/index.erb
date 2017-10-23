@@ -1,0 +1,22 @@
+<form action='/signup'>
+   <!-- method = 'post'> Sign up for Chitter! -->
+  <input type='submit' value="Sign up for Chitter!">
+</form>
+
+<h><%@peep_list.reverse.each do |peep| %>
+  <%= peep.user%> sez<br/>
+  "<%= peep.peep_text%>" <br/>
+  @ <%= peep.posttime%><br/><br/>
+<%end%>
+</h>
+
+<form action="/newpeep">
+  Input username
+  <input type="text" name='username'><br/>
+  Input peep<br/>
+  <textarea rows="4" cols="50" name="peep_text" required='required'>
+
+  </textarea>
+  <!-- <input type="text" name="peep_text"> -->
+  <input type='submit' value="Peep peep!!">
+</form>
