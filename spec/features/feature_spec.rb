@@ -13,7 +13,7 @@ require 'pry'
 
 feature "posting peeps" do
   scenario "peeps can be posted to the site and take a username" do
-    expect(Peep).to receive(:create).with(peep_text: "peep content is this", user: "will", posttime: Time.now.strftime('%I:%M:%S %p'))
+    expect(Peep).to receive(:create).with(peep_text: "peep content is this", user: "will", posttime: Time.now.strftime('%d/%m/%Y at %I:%M:%S %p'))
     input_peep
   end
 
@@ -29,7 +29,7 @@ feature "viewing links" do
   scenario "peeps are listed in reverse chronological order on the homepage" do
     input_peep('peep1')
     input_peep('peep2')
-    test_time = Time.now.strftime('%I:%M:%S %p')
+    test_time = Time.now.strftime('%d/%m/%Y at %I:%M:%S %p')
     chitter_text = "will sez\n\"peep2\"\n @ #{test_time}\n\nwill sez\n\"peep1\"\n @ #{test_time}"
     expect(page).to have_content(chitter_text)
     p text

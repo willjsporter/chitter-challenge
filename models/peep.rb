@@ -7,6 +7,6 @@ class Peep
   property :id,         Serial
   property :peep_text,  Text
   property :user,       String
-  property :posttime,   DateTime
+  property :posttime,   String
 
 end
