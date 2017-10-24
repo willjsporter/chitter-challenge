@@ -5,11 +5,11 @@ ENV['RACK_ENV'] ||= 'development'
 
 class Chitter < Sinatra::Base
 
-enable :sessions
+  enable :sessions
 
   get '/' do
-    "Hello world"
-    @peep_list=Peep.all#.each {|peeps| "#{peeps.user} sez #{peeps.peep_text}" }
+    @peep_list = Peep.all
+    # .each {|peeps| "#{peeps.user} sez #{peeps.peep_text}" }
     # "#{Peep.get(1).user} sez #{Peep.get(1).peep_text}"
 
     erb :index
@@ -17,7 +17,10 @@ enable :sessions
 
   get '/newpeep' do
     raise "Username required" if params[:username] == ""
-    Peep.create(peep_text: params[:peep_text], user: params[:username], posttime: Time.now.strftime('%I:%M:%S %p'))
+    peep_time = Time.now.strftime('%I:%M:%S %p')
+    peep_text = params[:peep_text]
+    user = params[:username]
+    Peep.create(peep_text: peep_text, user: user, posttime: peep_time)
     redirect '/'
   end
 
@@ -26,9 +29,12 @@ enable :sessions
   end
 
   post '/registered' do
-    User.create(name: params[:name], username: params[:username], email: params[:email], password: params[:password])
+    name = params[:name]
+    user = params[:username]
+    email = params[:email]
+    password = params[:password]
+    User.create(name: name, username: user, email: email, password: password)
     redirect '/'
   end
-
 
 end

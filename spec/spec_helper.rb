@@ -1,6 +1,5 @@
 ENV['RACK_ENV'] = 'test'
 
-
 require_relative '../app'
 require 'data_mapper'
 require 'dm-migrations'
@@ -40,8 +39,6 @@ RSpec.configure do |config|
     # DatabaseCleaner.clean
     Timecop.return
   end
-
-
 
   config.after(:suite) do
     puts

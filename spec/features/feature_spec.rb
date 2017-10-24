@@ -29,8 +29,8 @@ feature "viewing links" do
   scenario "peeps are listed in reverse chronological order on the homepage" do
     input_peep("peep1")
     input_peep("peep2")
-    chitter_text = "will sez\npeep1\n @ #{Time.now}\nwill sez\npeep2\n @ #{Time.now}"
-    expect(page).to have_content(text)
+    chitter_text = "will sez\npeep2\n @ #{Time.now}\nwill sez\npeep1\n @ #{Time.now}"
+    expect(page).to have_content(chitter_text)
   end
 end
 
@@ -68,7 +68,6 @@ feature "sign up for chitter" do
     expect(test_user.email).to eq "test@user.com"
     expect(test_user.password).to eq "password"
 
-
   end
 
 end
@@ -77,6 +76,6 @@ feature "posts require a user to post" do
   scenario "expect an errorpage if the peep in is done without a username" do
     visit '/'
     fill_in('peep_text', with: "hello")
-    expect { click_button("Peep peep!!") }.to raise_error { "Username required" }
+    expect { click_button("Peep peep!!") }.to(raise_error { "Username required" })
   end
 end
