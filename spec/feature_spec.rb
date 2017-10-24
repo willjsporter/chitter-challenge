@@ -54,8 +54,21 @@ feature "sign up for chitter" do
   # end
 
   scenario "users are stored on a database" do
-    expect(User).to receive(:create).with(name: params[:name], username: params[:username], email: params[:email], password: params[:password])
-    input_peep
+    # expect(User).to receive(:create).with(name: params[:name], username: params[:username], email: params[:email], password: params[:password])
+    visit '/'
+    click_button('Sign up for Chitter!')
+    fill_in('name', with: "Test User")
+    fill_in('email', with: "test@user.com")
+    fill_in('username', with: "testuser")
+    fill_in('password', with: "password")
+    click_button("Sign up!")
+    test_user = User.last(username: "testuser")
+    expect(test_user.name).to eq "Test User"
+    expect(test_user.username).to eq "testuser"
+    expect(test_user.email).to eq "test@user.com"
+    expect(test_user.password).to eq "password"
+
+
   end
 
 end
