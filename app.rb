@@ -15,7 +15,7 @@ class Chitter < Sinatra::Base
     erb :index
   end
 
-  get '/newpeep' do
+  post '/newpeep' do
     raise "Username required" if params[:username] == ""
     peep_time = Time.now.strftime('%I:%M:%S %p')
     peep_text = params[:peep_text]

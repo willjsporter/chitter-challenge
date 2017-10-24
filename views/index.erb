@@ -5,15 +5,15 @@
 
 
 <h><%@peep_list.reverse.each do |peep| %>
-  <%= peep.user%> sez<br/>
-  "<%= peep.peep_text%>" <br/>
-  @ <%= peep.posttime%><br/><br/>
+  <%= peep.user%> sez<br>
+  "<%= peep.peep_text%>" <br>
+  @ <%= peep.posttime%><br><br>
 <%end%>
 </h>
 
-<form action="/newpeep">
+<form action="/newpeep" method='post'>
   Input username
-  <input type="text" name='username'><br/>
+  <input type="text" name='username'><br>
   Input peep<br/>
   <textarea rows="4" cols="50" name="peep_text" required='required'>
 

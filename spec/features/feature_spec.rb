@@ -20,16 +20,17 @@ feature "posting peeps" do
   scenario "peeps can be viewed on the webpage" do
     # binding.pry
     input_peep
-    expect(page).to have_content("will sez\npeep content is this")
+    expect(page).to have_content("will sez\n\"peep content is this\"")
     # save_and_open_page
   end
 end
 
 feature "viewing links" do
   scenario "peeps are listed in reverse chronological order on the homepage" do
-    input_peep("peep1")
-    input_peep("peep2")
-    chitter_text = "will sez\npeep2\n @ #{Time.now}\nwill sez\npeep1\n @ #{Time.now}"
+    input_peep('peep1')
+    input_peep('peep2')
+    test_time = Time.now.strftime('%I:%M:%S %p')
+    chitter_text = "will sez\n\"peep2\"\n @ #{test_time}\n\nwill sez\n\"peep1\"\n @ #{test_time}"
     expect(page).to have_content(chitter_text)
     p text
   end
