@@ -31,6 +31,7 @@ feature "viewing links" do
     input_peep("peep2")
     chitter_text = "will sez\npeep2\n @ #{Time.now}\nwill sez\npeep1\n @ #{Time.now}"
     expect(page).to have_content(chitter_text)
+    p text
   end
 end
 
