@@ -1,7 +1,7 @@
-require_relative '../app'
-require_relative '../models/peep'
-require_relative '../models/user'
-require 'helpers/input_peep.rb'
+require_relative '../../app'
+require_relative '../../models/peep'
+require_relative '../../models/user'
+require_relative '../helpers/input_peep.rb'
 require 'pry'
 
 # def input_peep(text="peep content is this")
