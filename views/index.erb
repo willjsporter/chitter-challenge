@@ -1,5 +1,10 @@
 Login to Chitter!
-<form action='/'>
+
+<% if @current_user.nil?%>
+<%end%>
+<%="Signed in as #{@current_user}"%>
+
+<form action='/login' method='post'>
   <input type='text' placeholder='username' name='username'>
   <input type='password' placeholder="password" name="password">
   <input type='submit' value="Login">

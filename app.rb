@@ -8,6 +8,7 @@ class Chitter < Sinatra::Base
   enable :sessions
 
   get '/' do
+    @current_user = session[:current_user]
     @peep_list = Peep.all
     # .each {|peeps| "#{peeps.user} sez #{peeps.peep_text}" }
     # "#{Peep.get(1).user} sez #{Peep.get(1).peep_text}"
@@ -26,6 +27,11 @@ class Chitter < Sinatra::Base
 
   get '/signup' do
     erb :signup
+  end
+
+  post '/login' do
+    session[:current_user] = params[:username]
+    redirect '/'
   end
 
   post '/registered' do

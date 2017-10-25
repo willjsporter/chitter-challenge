@@ -1,7 +1,9 @@
 require_relative '../../app'
 require_relative '../../models/peep'
 require_relative '../../models/user'
-require_relative '../helpers/input_peep.rb'
+require_relative '../helpers/input_peep'
+require_relative '../helpers/signup'
+require_relative '../helpers/login'
 require 'pry'
 
 # def input_peep(text="peep content is this")
@@ -89,4 +91,23 @@ feature "users can sign in to Chitter" do
     expect(page).to have_selector("input[type=password][name='password']")
     expect(page).to have_selector("input[type=submit][value='Login']")
   end
+
+  scenario "After signin the user's name is displayed" do
+    user_signup
+    user_login
+    expect(page).to have_content "Signed in as will"
+  end
+
+  # scenario "After signin the form is not displayed" do
+  #   user_signup
+  #   visit'/'
+  #   expect(page).not_to have_selector("input[type=text][name='username']")
+  #   expect(page).not_to have_selector("input[type=password][name='password']")
+  # end
+
+  # scenario "" do
+  #   visit '/'
+  # end
+
+
 end
