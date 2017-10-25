@@ -16,10 +16,10 @@ class Chitter < Sinatra::Base
   end
 
   post '/newpeep' do
-    raise "Username required" if params[:username] == ""
+    raise "Username required" if params[:user] == ""
     peep_time = Time.now.strftime('%d/%m/%Y at %I:%M:%S %p')
     peep_text = params[:peep_text]
-    user = params[:username]
+    user = params[:user]
     Peep.create(peep_text: peep_text, user: user, posttime: peep_time)
     redirect '/'
   end

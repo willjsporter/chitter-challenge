@@ -81,3 +81,12 @@ feature "posts require a user to post" do
     expect { click_button("Peep peep!!") }.to(raise_error { "Username required" })
   end
 end
+
+feature "users can sign in to Chitter" do
+  scenario "There is a form on the homepage for logging in" do
+    visit '/'
+    expect(page).to have_selector("input[type=text][name='username']")
+    expect(page).to have_selector("input[type=password][name='password']")
+    expect(page).to have_selector("input[type=submit][value='Login']")
+  end
+end
