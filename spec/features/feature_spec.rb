@@ -98,12 +98,12 @@ feature "users can sign in to Chitter" do
     expect(page).to have_content "Signed in as will"
   end
 
-  # scenario "After signin the form is not displayed" do
-  #   user_signup
-  #   visit'/'
-  #   expect(page).not_to have_selector("input[type=text][name='username']")
-  #   expect(page).not_to have_selector("input[type=password][name='password']")
-  # end
+  scenario "After signin the form is not displayed" do
+    user_signup
+    user_login
+    expect(page).not_to have_selector("input[type=text][name='username']")
+    expect(page).not_to have_selector("input[type=password][name='password']")
+  end
 
   # scenario "" do
   #   visit '/'

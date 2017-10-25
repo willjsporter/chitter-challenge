@@ -1,14 +1,16 @@
-Login to Chitter!
+<% if !!@current_user.nil?%>
+  Login to Chitter!
 
-<% if @current_user.nil?%>
+  <form action='/login' method='post'>
+    <input type='text' placeholder='username' name='username'>
+    <input type='password' placeholder="password" name="password">
+    <input type='submit' value="Login">
+  </form>
+<% else %>
+  <%="Signed in as #{@current_user}"%>
 <%end%>
-<%="Signed in as #{@current_user}"%>
 
-<form action='/login' method='post'>
-  <input type='text' placeholder='username' name='username'>
-  <input type='password' placeholder="password" name="password">
-  <input type='submit' value="Login">
-</form>
+
 
 <form action='/signup'>
   <input type='submit' value="Sign up for Chitter!">
