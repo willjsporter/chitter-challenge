@@ -105,9 +105,17 @@ feature "users can sign in to Chitter" do
     expect(page).not_to have_selector("input[type=password][name='password']")
   end
 
-  # scenario "" do
-  #   visit '/'
-  # end
+  scenario "signin fails if you do not input a valid username and password" do
+    user_signup
+    fill_in('username', with: "will")
+    fill_in('password', with: "password1234")
+    click_button("Login")
+    expect(page).to have_content("NOT A VALID USERNAME OR PASSWORD")
+  end
 
+  # COULD HAVE:
+  # 1) NOTHING (NIL)
+  # 2) FAILED signin
+  # 3)
 
 end
